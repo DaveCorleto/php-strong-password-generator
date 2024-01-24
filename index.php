@@ -34,8 +34,6 @@ Scriviamo tutto (logica e layout) in un unico file `index.php`. -->
 
     </form>
 
-        <div class="gen-pass"> <php? [$newPassword] ?> </div>
-
     </header>
 
     <?php
@@ -63,19 +61,16 @@ Scriviamo tutto (logica e layout) in un unico file `index.php`. -->
             // Stringa di caratteri da cui generare la parola
                 $caratteri = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+[]{}|;:,.<>?';
                 $caratteriMiscelati = str_shuffle ($caratteri);
-                return = substr ($caratteriMiscelati, 0, $lunghezzaPassword);
+                return substr ($caratteriMiscelati, 0, $lunghezzaPassword);
             }
     
 
         // Verifico se il form è stato inviato 
 
-        if ($lunghezzaPassword >0) {
-            $newPassword = generaPassword();
+        if (isset($_GET["password"])) {
+            $newPassword = generaPassword($lunghezzaPassword);
+            echo "<div class='gen-pass'><h1>" . "La password che abbiamo generato per te è: ". $newPassword . "</h1></div>";
         } 
-        else {
-            $newPassword = "Non è stata generata ancora nessuna password";
-        }
-
     ?>
 
 </body>
