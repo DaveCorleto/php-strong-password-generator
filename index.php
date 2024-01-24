@@ -73,7 +73,7 @@ Scriviamo tutto (logica e layout) in un unico file `index.php`. -->
             $newPassword = generaPassword();
         } 
         else {
-            $newPassword = "Non è stata generata ancora nessuna password"
+            $newPassword = "Non è stata generata ancora nessuna password";
         }
 
     ?>
