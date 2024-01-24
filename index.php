@@ -34,11 +34,14 @@ Scriviamo tutto (logica e layout) in un unico file `index.php`. -->
 
     </form>
 
-        <div class="gen-pass">['$newpassword']</div>
+        <div class="gen-pass"> <php? [$newPassword] ?> </div>
 
     </header>
 
     <?php
+                
+
+        // Questa parte serve per trasmettere la lunghezza della password digitata nel form e salvarla in $lunghezzaPassword
 
         if(isset($_GET["password"])) {
             $password = $_GET["password"];
@@ -54,12 +57,23 @@ Scriviamo tutto (logica e layout) in un unico file `index.php`. -->
         }
 
         // ora uso $lunghezzaPassword per generare una password randomica che verrà mostrata nel div.gen-pass
+        // Scrivo la funzione generaPassword
 
-        if ($lunghezzaPassword > 0) {
-            $newpassword = 
-        }
+        function generaPassword ($lunghezzaPassword){
+            // Stringa di caratteri da cui generare la parola
+                $caratteri = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+[]{}|;:,.<>?';
+                $caratteriMiscelati = str_shuffle ($caratteri);
+                return = substr ($caratteriMiscelati, 0, $lunghezzaPassword);
+            }
+    
+
+        // Verifico se il form è stato inviato 
+
+        if ($lunghezzaPassword >0) {
+            $newPassword = generaPassword();
+        } 
         else {
-            $newpassword = "Non è ancora stata generata nessuna password"
+            $newPassword = "Non è stata generata ancora nessuna password"
         }
 
     ?>
